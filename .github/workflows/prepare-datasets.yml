@@ -1,0 +1,16 @@
+name: Prepare datasets
+on: [push]
+jobs:
+  prepare-datasets:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - run: ./fetch-sources.sh && ./prepare-sources.sh
+      - uses: "marvinpinto/action-automatic-releases@latest"
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Latest version of the datasets"
+          files: |
+            processed/*.csv
