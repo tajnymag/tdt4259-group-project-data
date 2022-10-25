@@ -8,10 +8,7 @@ jobs:
 
       - name: Get current date
         id: current-date
-        run: echo "date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
-
-      - name: Check current env
-        run: cat $GITHUB_ENV && env
+        run: echo "current-date=$(date +'%Y-%m-%d')" >> $GITHUB_ENV
 
       - name: Cache remote datasets
         id: cache-fetch-datasets
