@@ -8,7 +8,7 @@ jobs:
 
       - name: Get current date
         id: current-date
-        run: echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
+        run: echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_ENV
 
       - name: Cache remote datasets
         id: cache-fetch-datasets
