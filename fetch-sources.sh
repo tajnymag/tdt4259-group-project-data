@@ -55,8 +55,10 @@ function fetch_statnett_web_download() {
 		for year in $(seq $BEGIN_YEAR $END_YEAR); do
 			echo "downloading year $year"
 			local dataset_url="$STATNETT_WEB_DOWNLOAD_ENDPOINT/$dataset_name/$year"
-			curl -s -o "$OUTPUT_DIR/$dataset_name/$dataset_name"_"$year.xls" "$dataset_url"
+			curl -s -o "$OUTPUT_DIR/$dataset_name/$dataset_name"_"$year.xls" "$dataset_url" &
 		done
+		echo "waiting for all $dataset_name downloads to finish"
+		wait
 	done
 
 	echo "removing empty datasets"

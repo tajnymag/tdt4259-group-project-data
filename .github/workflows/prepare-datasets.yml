@@ -5,8 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - run: ./fetch-sources.sh && ./prepare-sources.sh
-      - uses: "marvinpinto/action-automatic-releases@latest"
+
+      - name: Fetch datasets
+        run: ./fetch-sources.sh
+
+      - name: Install dependencies
+        run: sudo apt install -y libreoffice
+
+      - name: Prepare datasets
+        run: ./prepare-sources.sh
+
+      - name: Upload artifacts as a release
+        uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
