@@ -46,11 +46,11 @@ Shows the production and consumption of energy in all Norway.
 | Variable | Unit | Type | Description |
 | -------- | ---- | ---- | ----------- |
 | Area | - | NOK1, NOK2, NOK3, NOK4, NOK5, NOA, NOB, NOC | Area of the norwegian power grid |
-| FCR-N Price NOK/MWh| NOK/MWh| float | Price for frequency control reserve per MWh|
-| FCR-N Price EUR/MWh| EUR/MWh| float | Price for frequency control reserve per MWh|
-| FCR-N Volume MWh| MWh| float | Volume of frequency control reserve |
-| FCR-D Price EUR/MWh| EUR/MWh| float | Price for frequency control reserve per MWh|
-| FCR-D Volume MWh| MWh| float | Volume of frequency control reserve |
+| FCR-N Price NOK/MWh| NOK/MWh| integer | Price for frequency control reserve per MWh|
+| FCR-N Price EUR/MWh| EUR/MWh| integer | Price for frequency control reserve per MWh|
+| FCR-N Volume MWh| MWh| integer | Volume of frequency control reserve |
+| FCR-D Price EUR/MWh| EUR/MWh| integer | Price for frequency control reserve per MWh|
+| FCR-D Volume MWh| MWh| integer | Volume of frequency control reserve |
 | NOA-Price | NOK/MWh | integer | Price for MWh in NOA |
 | NOA-Prod | MWh | integer | Production in NOA |
 | NOA-Cons | MWh | integer | Consumption in NOA |
@@ -71,8 +71,9 @@ Shows the production and consumption of energy in all Norway.
 | RKOM-B Price Weekend | NOK/MWh | integer | Price of secondary reserves for weekends |
 | Production | MWh | integer | Production in the whole norwegian power grid |
 | Consumption | MWh | integer | Consumption in the whole norwegian power grid |
-| Import | MWh | integer | Import into the whole norwegian power grid |
-| Export | MWh | integer | Export out of the whole norwegian power grid |
+| Import | MWh | float | Import into the whole norwegian power grid |
+| Export | MWh | float | Export out of the whole norwegian power grid |
+| Flow from NO | MWh | float | Flow from the norwegian power grid |
 | Workday FRR-A Up Volume | MWh | integer | Volume of frequency restoration reserves for workdays |
 | Workday FRR-A Up Price | NOK/MWh | integer | Price of frequency restoration reserves for workdays |
 | Workday FRR-A Down Volume | MWh | integer | Volume of frequency restoration reserves for workdays |
@@ -81,3 +82,8 @@ Shows the production and consumption of energy in all Norway.
 | Weekend FRR-A UP Price | NOK/MWh | integer | Price of frequency restoration reserves for weekends |
 | Weekend FRR-A Down Volume | MWh | integer | Volume of frequency restoration reserves for weekends |
 | Weekend FRR-A Down Price | NOK/MWh | integer | Price of frequency restoration reserves for weekends |
+
+### Processed dataset variables
+
+| Variable | Unit | Type | Description |
+| -------- | ---- | ---- | ----------- |

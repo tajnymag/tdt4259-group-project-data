@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# load common helpers
+source common.sh
+
 # setup variables
 OUTPUT_DIR=raw
 BEGIN_YEAR=1970
@@ -10,46 +13,8 @@ STATNETT_WEB_DOWNLOAD_ENDPOINT="$STATNETT_RESTAPI_ENDPOINT/Download"
 # setup output directory
 mkdir -p "$OUTPUT_DIR"
 
-statnett_web_download_datasets=(
-	"productionconsumption"
-	"physicalflow"
-	"primaryreservesday"
-	"primaryreservesdaytwo"
-	"primaryreservesweek"
-	"secondaryreserves"
-	"rkomdata"
-	"rkom"
-)
-
-statnett_json_datasets=(
-	"Physicalflow/GetData"
-	"ProductionConsumption/GetData"
-	"ProductionConsumption/GetLatestDetailedOverview"
-	"Reserves/PrimaryReservesPerDay"
-	"Reserves/PrimaryReservesPerWeek"
-	"Reserves/SecondaryReservesPerWeek"
-	"Frequency/ByMinute"
-	"Frequency/BySecond"
-	"ElspotSeparatorLine/LastChanges"
-	"ElspotSeparatorLine/AsPng"
-	"ElspotSeparatorLine/AsPng/"
-	"ElspotPowerSituation/LastChanges"
-	"ElspotPowerSituation/GetPowerSituations"
-	"PhysicalFlowMap/GetFlowMap"
-	"PhysicalFlowMap/GetFlow"
-	"Reservoir/LastWeekData/3"
-	"Reservoir"
-	"Reservoir/NveProxy"
-	"Rkom/Year/2012"
-	"Rkom/MetaData"
-	"Systemprice"
-	"Translator/Translations"
-	"download"
-	"Keyfigures"
-)
-
 function fetch_statnett_web_download() {
-	for dataset_name in ${statnett_web_download_datasets[@]}; do
+	for dataset_name in ${statnett_table_datasets[@]}; do
 		echo "downloading dataset $dataset_name"
 		mkdir -p "$OUTPUT_DIR/$dataset_name"
 		for year in $(seq $BEGIN_YEAR $END_YEAR); do
