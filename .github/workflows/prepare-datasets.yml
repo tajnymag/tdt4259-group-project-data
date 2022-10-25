@@ -15,8 +15,7 @@ jobs:
         uses: actions/cache@v3
         with:
           path: raw/
-          restore-keys: |
-            remote-datasets-${{ hashFiles('fetch-sources.sh') }}-${{ env.current-date }}
+          key: remote-datasets-${{ hashFiles('fetch-sources.sh') }}-${{ env.current-date }}
 
       - if: ${{ steps.cache-fetch-datasets.outputs.cache-hit != 'true' }}
         name: Fetch datasets
