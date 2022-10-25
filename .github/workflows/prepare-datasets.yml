@@ -21,11 +21,23 @@ jobs:
         name: Fetch datasets
         run: ./fetch-sources.sh
 
-      - name: Install dependencies
+      - name: Cache processed sources
+        id: cache-process-sources
+        uses: actions/cache@v3
+        with:
+          path: processed/
+          key: processed-sources-${{ hashFiles('raw/**/*.xls') }}
+
+      - if: ${{ steps.cache-process-sources.outputs.cache-hit != 'true' }}
+        name: Install dependencies
         run: sudo apt-get update && sudo apt-get install -y libreoffice
 
+      - if: ${{ steps.cache-process-sources.outputs.cache-hit != 'true' }}
+        name: Process sources
+        run: ./process-sources.sh
+      
       - name: Prepare datasets
-        run: ./prepare-sources.sh
+        run: ./prepare-datasets.sh
 
       - name: Upload artifacts as a release
         uses: "marvinpinto/action-automatic-releases@latest"
@@ -35,4 +47,4 @@ jobs:
           prerelease: true
           title: "Latest version of the datasets"
           files: |
-            processed/*.csv
+            datasets/*.csv

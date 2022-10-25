@@ -1,13 +1,13 @@
 #!/usr/bin/bash
 
 # setup variables
-INPUT_DIR=raw
-OUTPUT_DIR=processed
+INPUT_DIR=processed
+OUTPUT_DIR=datasets
 
 # setup output directory
 mkdir -p "$OUTPUT_DIR"
 
-# process datasets
+# prepare datasets
 for dataset_path in $(find "$INPUT_DIR" -mindepth 1 -maxdepth 2 -type d); do
     echo "processing dataset $dataset_path"
 
