@@ -6,11 +6,24 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
-      - name: Fetch datasets
+      - name: Get current date
+        id: current-date
+        run: echo "{date}={$(date +'%Y-%m-%d')}" >> $GITHUB_STATE
+
+      - name: Cache remote datasets
+        id: cache-fetch-datasets
+        uses: actions/cache@v3
+        with:
+          path: raw/
+          restore-keys: |
+            remote-datasets-${{ hashFiles('fetch-sources.sh') }}-${{ env.current-date }}
+
+      - if: ${{ steps.cache-fetch-datasets.outputs.cache-hit != 'true' }}
+        name: Fetch datasets
         run: ./fetch-sources.sh
 
       - name: Install dependencies
-        run: sudo apt install -y libreoffice
+        run: sudo apt-get update && sudo apt-get install -y libreoffice
 
       - name: Prepare datasets
         run: ./prepare-sources.sh
