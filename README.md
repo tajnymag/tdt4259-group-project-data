@@ -11,7 +11,7 @@ Nordic power grid flow
 
 ### Primary reserves
 
-Shows the amount and pricing of primary reserves in the grid. Also called **F**requency **C**ontrol **R**eserves.
+Shows the amount and pricing of primary reserves in the grid. **FCR** stands for **F**requency **C**ontrol **R**eserves. It can be coupled with either **N** or **D** postfix. **N** stands for *normal operation* and **D** stands for *disturbances*.
 
 primaryreserves{day,two} should be merged
 
