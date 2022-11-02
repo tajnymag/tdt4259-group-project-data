@@ -40,7 +40,7 @@ jobs:
         run: ./prepare-datasets.sh
 
       - name: Scrape restapi
-        run: pip install -r requirements.txt && ./scripts/scrape-restapi.sh
+        run: pip install -r requirements.txt && ./scripts/restapi/scrape-driftsdata.py
 
       - name: Upload artifacts as a release
         uses: "marvinpinto/action-automatic-releases@latest"
