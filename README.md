@@ -109,6 +109,7 @@ rkom and rkomdata is the same thing, but rkomdata is more is more detailed and s
 | Week | week | integer | Week of the year of the measurement |
 | Areas | - | NOK1, NOK2, NOK3, NOK4, NOK5 | Pricing areas for the bidding |
 | Direction | - | Up, Down | **No idea what it is** |
+| Hour | hour | integer | Hour of the day for which the price and volume correspond to |
 | RKOM-H Volume Weekday | MWh | integer | Volume of primary reserves for workdays |
 | RKOM-H Price Weekday | NOK/MWh | integer | Price of primary reserves for workdays |
 | RKOM-H Volume Weekend | MWh | integer | Volume of primary reserves for weekends |
