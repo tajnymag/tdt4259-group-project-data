@@ -39,6 +39,9 @@ jobs:
       - name: Prepare datasets
         run: ./prepare-datasets.sh
 
+      - name: Scrape restapi
+        run: pip install -r requirements.txt && ./scripts/scrape-restapi.sh
+
       - name: Upload artifacts as a release
         uses: "marvinpinto/action-automatic-releases@latest"
         with:

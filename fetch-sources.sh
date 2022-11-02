@@ -14,7 +14,7 @@ STATNETT_WEB_DOWNLOAD_ENDPOINT="$STATNETT_RESTAPI_ENDPOINT/Download"
 mkdir -p "$OUTPUT_DIR"
 
 function fetch_statnett_web_download() {
-	for dataset_name in ${statnett_table_datasets[@]}; do
+	for dataset_name in "${statnett_table_datasets[@]}"; do
 		echo "downloading dataset $dataset_name"
 		mkdir -p "$OUTPUT_DIR/$dataset_name"
 		for year in $(seq $BEGIN_YEAR $END_YEAR); do
