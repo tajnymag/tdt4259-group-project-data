@@ -38,6 +38,11 @@ jobs:
       
       - name: Prepare datasets
         run: ./prepare-datasets.sh
+        
+      - name: Install fixed python version
+        uses: actions/setup-python@v4 
+        with:
+          python-version: '3.10' 
 
       - name: Scrape restapi
         run: pip install -r requirements.txt && ./scripts/restapi/scrape_driftsdata.py
