@@ -68,13 +68,13 @@ def main():
     # scrape_production_consumption_detailed(START_DATE, END_DATE, "production_consumption.csv")
 
     print(f"Scraping physical flow data since {START_DATE}")
-    scrape_physical_flow(START_DATE, END_DATE, "physical_flow_per_country.csv")
+    scrape_physical_flow(START_DATE, END_DATE, os.path.join(OUTPUT_DIR, "physical_flow_per_country.csv"))
 
     print(f"Scraping reservoir data")
-    scrape_reservoirs("hydro_reservoirs.csv")
+    scrape_reservoirs(os.path.join(OUTPUT_DIR, "hydro_reservoirs.csv"))
 
     print(f"Scraping power situations since {START_DATE}")
-    scrape_power_situations(START_DATE, END_DATE, "power_situations.csv")
+    scrape_power_situations(START_DATE, END_DATE, os.path.join(OUTPUT_DIR, "power_situations.csv"))
 
 
 if __name__ == "__main__":
