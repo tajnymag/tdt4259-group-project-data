@@ -51,8 +51,8 @@ jobs:
         uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
-          prerelease: true
-          title: "Latest version of the datasets"
+          automatic_release_tag: "${{ env.current-date }}"
+          prerelease: false
+          title: "Latest version of the datasets as of ${{ env.current-date }}"
           files: |
             datasets/*.csv

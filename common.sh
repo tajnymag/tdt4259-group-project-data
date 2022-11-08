@@ -37,7 +37,7 @@ statnett_json_datasets=(
 )
 
 function concat_csv() {
-    local header_set
+    local header_set=""
     for csv_path in "$@"; do
         if [[ -z "$header_set" ]]; then
             head -n 1 "$csv_path"

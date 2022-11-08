@@ -1,4 +1,6 @@
 #!/usr/bin/bash
+set -euo pipefail
+shopt -s inherit_errexit
 
 # load common helpers
 source common.sh

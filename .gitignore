@@ -1,3 +1,8 @@
 raw/
 processed/*
 datasets/
+
+.idea/
+venv/
+
+__pycache__/
