@@ -30,5 +30,10 @@ mv "$OUTPUT_DIR/primaryreservesday.csv.tmp" "$OUTPUT_DIR/primaryreservesday.csv"
 
 # filter out empty rkom data
 echo "filtering out empty rkom data"
-awk -F, 'BEGIN { FPAT = "([^, ]+)|(\"[^\"]+\")" } { sum=0; for (i=6;i<=NF;i++) sum+=$i; if (sum > 0) print $0 }' "$OUTPUT_DIR/rkom.csv" > "$OUTPUT_DIR/rkom.csv.tmp"
-mv "$OUTPUT_DIR/rkom.csv.tmp" "$OUTPUT_DIR/rkom.csv"
+awk -F, 'BEGIN { FPAT = "([^, ]+)|(\"[^\"]+\")" } { sum=0; for (i=6;i<=NF;i++) sum+=$i; if (NR == 1 || sum > 0) print $0 }' "$OUTPUT_DIR/rkomdata.csv" > "$OUTPUT_DIR/rkomdata.csv.tmp"
+mv "$OUTPUT_DIR/rkomdata.csv.tmp" "$OUTPUT_DIR/rkomdata.csv"
+
+# rename rkom
+echo "unifying rkom and rkomdata file names"
+mv "$OUTPUT_DIR/rkomdata.csv" "$OUTPUT_DIR/rkom_after_2014.csv"
+mv "$OUTPUT_DIR/rkom.csv" "$OUTPUT_DIR/rkom_before_2014.csv"
