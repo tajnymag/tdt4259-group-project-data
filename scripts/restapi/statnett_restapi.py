@@ -290,6 +290,9 @@ def get_reservoir(include_median=True, include_max=True, include_min=True) -> Li
         for [region, measurements] in zip(regions, region_data):
             week = 1
             for measurement in measurements:
+                if item.type != MeasurementType.MEASUREMENT:
+                    continue
+
                 measured_at = datetime.fromisocalendar(item.fromYear, week, 1)
                 rows.append(
                     GetReservoirRow(
